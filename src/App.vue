@@ -3,10 +3,8 @@
     <h1 class="title">{{ title }}</h1>
     <h2 class="date">{{ currentDate() }}</h2>
 
-    <h1 v-if="entries"></h1>
-
-    <ul class="ul">
-      <li class="box" v-for="entry in entries.slice(1)" :key="entry.id">
+    <ul class="ul" v-if="entries">
+      <li class="box" v-for="entry in entries" :key="entry.id">
         <span class="box-date"
           >{{ entry[0] }} , {{ entry[1].replaceAll("/", ".") }}</span
         ><br />
@@ -16,7 +14,7 @@
       </li>
     </ul>
 
-    <h1 v-else>Np event</h1>
+    <h1 v-else>No event</h1>
 
     <!-- <ul>
       <li>
@@ -62,9 +60,10 @@ export default {
   },
   computed: {
     gsheet_url() {
-      return `https://sheets.googleapis.com/v4/spreadsheets/${this.sheet_id}/values:batchGet?ranges=A1%3AE100&valueRenderOption=FORMATTED_VALUE&key=${this.api_token}`;
+      return `https://sheets.googleapis.com/v4/spreadsheets/${this.sheet_id}/values:batchGet?ranges=A2%3AE100&valueRenderOption=FORMATTED_VALUE&key=${this.api_token}`;
     },
   },
+
   methods: {
     getData() {
       axios.get(this.gsheet_url).then((response) => {
@@ -85,12 +84,22 @@ export default {
       }
       return dateTime;
     },
+
+    refreshData () {
+      this.currenDate ();
+      this.getData();
+    },
   },
 
   mounted() {
-    this.getData();
+    this.refreshData();
+    setInterval(() => {
+      this.refreshData();
+    },1800000000000000);    
   },
 };
+
+
 </script>
 
 <style>
