@@ -86,7 +86,7 @@ export default {
     },
 
     refreshData () {
-      this.currenDate ();
+      this.currentDate ();
       this.getData();
     },
   },
