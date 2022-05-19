@@ -16,26 +16,7 @@
 
     <h1 v-else>No event</h1>
 
-    <!-- <ul>
-      <li>
-        <span style="color: red">14.00Uhr</span>
-        <h3>Besichtigungs Besuch</h3>
-        <span> Interessierte fuer den zweiten Kurs werden uns besuchen </span>
-      </li><br>
-
-      <li class="li">
-        <span style="color: red">14.00Uhr</span>
-        <h3>Besichtigungs Besuch</h3>
-        <span> Interessierte fuer den zweiten Kurs werden uns besuchen </span>
-      </li><br>
-
-      <li class="li">
-        <span style="color: red">14.00Uhr</span>
-        <h3>Besichtigungs Besuch</h3>
-        <span> Interessierte fuer den zweiten Kurs werden uns besuchen </span>
-      </li><br>
-    </ul> -->
-
+    
     <footer>
       <img class="img" alt="logo" src="./assets/STZH_SEB_Logo.png" />
       <img class="img" alt="logo" src="./assets/Opportunity.png" />
@@ -95,7 +76,7 @@ export default {
     this.refreshData();
     setInterval(() => {
       this.refreshData();
-    },/*1800000000000000*/);   // wart e
+    },/*1800000000000000*/);   // warte zeit pro secunde 1000 geben
   },
 };
 
